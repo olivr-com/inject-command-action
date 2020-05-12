@@ -1,40 +1,36 @@
 # Inject command action
 
-<!-- auto-test -->
-
 [![tests](https://github.com/olivr-com/inject-command-action/workflows/tests/badge.svg)](https://github.com/olivr-com/inject-command-action/actions?query=workflow%3Atests)
 
-<!-- auto-test -->
+GitHub action to inject the output of a command into a file of your repo.
 
-GitHub action to inject the content of a remote file into a file of your repo.
-
-We use this action to maintain an organization-wide central repo with common sections of a README.md (about our company, license, contributing, etc.). Other repos sync with the latest versions of those sections every time they're built.
+We use this action to generate certain parts of our README with some third-party CLI tools.
 
 ## Usage
 
 ### Simple example
 
-It will look for **two occurences** of `<!-- auto-about -->` in the file `README.md` and inject the content of `https://test.com/about.md` between these two occurences. If this action can't find these occurences, it will inject the content at the end of the `README.md` file.
+It will look for **two occurences** of `<!-- auto-pwd -->` in the file `README.md` and inject the output of `pwd | sed 's/\// /g'` between these two occurences. If this action can't find these occurences, it will inject the output at the end of the `README.md` file.
 
 ```yaml
 uses: olivr-com/inject-command-action@v1
 with:
-  url: https://test.com/about.md
+  command: pwd | sed 's/\// /g'
   target: README.md
 ```
 
-> `<!-- auto-about -->` is used because the file being pulled is called _**about**.md_
+> `<!-- auto-pwd -->` is used because the first command is **pwd**
 
 ### Complete example
 
-It will look for **two occurences** of `<!-- generate-about-section -->` in the file `README.md` and inject the content of `https://test.com/about.md` between these two occurences. If this action can't find them, it will **not** inject anything.
+It will look for **two occurences** of `<!-- generate-path-section -->` in the file `README.md` and inject the output of `pwd | sed 's/\// /g'` between these two occurences. If this action can't find them, it will **not** inject anything.
 
 ```yaml
 uses: olivr-com/inject-command-action@v1
 with:
-  url: https://test.com/about.md
+  command: pwd | sed 's/\// /g'
   target: README.md
-  pattern: <!-- generate-about-section -->
+  pattern: <!-- generate-path-section -->
   force: false
 ```
 

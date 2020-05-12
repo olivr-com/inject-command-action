@@ -25,13 +25,11 @@
   "homepage": "https://github.com/olivr-com/inject-command-action#readme",
   "dependencies": {
     "@actions/core": "^1.1.1",
-    "@actions/io": "^1.0.2",
-    "node-fetch": "^2.6.0"
+    "@actions/io": "^1.0.2"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.20.5",
     "eslint": "^6.3.0",
-    "jest": "^26.0.1",
-    "jest-fetch-mock": "^3.0.3"
+    "jest": "^26.0.1"
   }
 }

@@ -1,16 +1,16 @@
 const core = require('@actions/core')
-const injectRemoteFile = require('./injectRemoteFile')
+const injectCommand = require('./injectCommand')
 
 // most @actions toolkit packages have async methods
 async function run() {
   try {
-    const url = core.getInput('url')
+    const command = core.getInput('command')
     const target = core.getInput('target')
     const pattern = core.getInput('pattern')
     const force = core.getInput('force')
 
-    const [pattern_text, file_changed] = await injectRemoteFile(
-      url,
+    const [pattern_text, file_changed] = await injectCommand(
+      command,
       target,
       pattern,
       force

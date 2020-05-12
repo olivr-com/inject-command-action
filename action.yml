@@ -1,11 +1,11 @@
 name: 'Inject command action'
-description: 'Inject the content of a remote file into a file of your repo'
+description: 'Inject the output of a command into a file of your repo'
 branding:
   icon: 'file-plus'
   color: 'white'
 inputs:
-  url:
-    description: 'URL of the remote file'
+  command:
+    description: 'Command to execute'
     required: true
   target:
     description: 'Relative path to the local file you want to modify'

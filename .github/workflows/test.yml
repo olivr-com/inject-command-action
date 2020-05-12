@@ -17,5 +17,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          url: https://raw.githubusercontent.com/olivr-com/inject-command-action/master/test.md
+          command: pwd | sed 's/\\// /g'
           target: README.md
