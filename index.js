@@ -6,8 +6,8 @@ async function run() {
   try {
     const command = core.getInput('command')
     const target = core.getInput('target')
-    const pattern = core.getInput('pattern')
-    const force = core.getInput('force')
+    const pattern = core.getInput('pattern') || ''
+    const force = core.getInput('force') || true
 
     const [pattern_text, file_changed] = await injectCommand(
       command,
