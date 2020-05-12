@@ -19,6 +19,10 @@ async function run() {
     core.setOutput('debug', debug)
     core.setOutput('debug2', debug2)
 
+    console.log(debug)
+    console.log('**********************')
+    console.log(debug2)
+
     core.setOutput('pattern', pattern_text)
     console.log(`Pattern used: ${pattern_text}`)
 
