@@ -150,7 +150,12 @@ let injectCommand = async function (
   }
 
   if (target_content == new_target_content)
-    return [pattern_text, '', target_content, new_target_content]
+    return [
+      pattern_text,
+      '',
+      !pattern_regex.test(target_content) && force == true,
+      pattern_regex.test(target_content),
+    ]
   else {
     fs.writeFileSync(target, new_target_content)
     return [pattern_text, target, target_content, new_target_content]
