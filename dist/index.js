@@ -62,7 +62,7 @@ async function run() {
     const command = core.getInput('command')
     const target = core.getInput('target')
     const pattern = core.getInput('pattern') || ''
-    const force = core.getInput('force') || true
+    const force = !core.getInput('force') ? false : true
 
     const [pattern_text, file_changed, debug, debug2] = await injectCommand(
       command,
@@ -70,13 +70,6 @@ async function run() {
       pattern,
       force
     )
-
-    core.setOutput('debug', debug)
-    core.setOutput('debug2', debug2)
-
-    console.log(debug)
-    console.log('**********************')
-    console.log(debug2)
 
     core.setOutput('pattern', pattern_text)
     console.log(`Pattern used: ${pattern_text}`)
@@ -149,16 +142,10 @@ let injectCommand = async function (
     new_target_content = target_content.replace(pattern_regex, output_content)
   }
 
-  if (target_content == new_target_content)
-    return [
-      pattern_text,
-      '',
-      !pattern_regex.test(target_content) && force == true,
-      force,
-    ]
+  if (target_content == new_target_content) return [pattern_text, '']
   else {
     fs.writeFileSync(target, new_target_content)
-    return [pattern_text, target, target_content, new_target_content]
+    return [pattern_text, target]
   }
 }
 

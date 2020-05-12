@@ -44,11 +44,10 @@ let injectCommand = async function (
     new_target_content = target_content.replace(pattern_regex, output_content)
   }
 
-  if (target_content == new_target_content)
-    return [pattern_text, '', target_content, new_target_content]
+  if (target_content == new_target_content) return [pattern_text, '']
   else {
     fs.writeFileSync(target, new_target_content)
-    return [pattern_text, target, target_content, new_target_content]
+    return [pattern_text, target]
   }
 }
 

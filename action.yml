@@ -17,10 +17,6 @@ inputs:
     description: 'Append at the bottom of the target file if the pattern is not found'
     default: true
 outputs:
-  debug:
-    description: 'debug output'
-  debug2:
-    description: 'debug output'
   pattern:
     description: 'Pattern used for the replacement (useful to debug)'
   file_changed:
