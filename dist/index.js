@@ -154,7 +154,7 @@ let injectCommand = async function (
       pattern_text,
       '',
       !pattern_regex.test(target_content) && force == true,
-      pattern_regex.test(target_content),
+      force,
     ]
   else {
     fs.writeFileSync(target, new_target_content)
