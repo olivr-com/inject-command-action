@@ -9,12 +9,15 @@ async function run() {
     const pattern = core.getInput('pattern') || ''
     const force = core.getInput('force') || true
 
-    const [pattern_text, file_changed] = await injectCommand(
+    const [pattern_text, file_changed, debug, debug2] = await injectCommand(
       command,
       target,
       pattern,
       force
     )
+
+    core.setOutput('debug', debug)
+    core.setOutput('debug2', debug2)
 
     core.setOutput('pattern', pattern_text)
     console.log(`Pattern used: ${pattern_text}`)
