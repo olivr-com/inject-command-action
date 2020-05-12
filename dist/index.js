@@ -137,7 +137,13 @@ let injectCommand = async function (
   let new_target_content
 
   if (!pattern_regex.test(target_content) && force == true) {
+    console.log(target_content)
+    console.log('--------------------------')
+    console.log('--------------------------')
+    console.log('--------------------------')
+    console.log('--------------------------')
     new_target_content = target_content + '\n' + output_content
+    console.log(new_target_content)
   } else {
     new_target_content = target_content.replace(pattern_regex, output_content)
   }
